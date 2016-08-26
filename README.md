@@ -11,3 +11,5 @@ the `Mail\Transport\TransportInterface`.
 
 - File issues at https://github.com/zendframework/zend-mail/issues
 - Documentation is at https://zendframework.github.io/zend-mail/
+
+Fork that includes verify_peer, verify_peer_name and allow_self_signed for Zend Mail to use self signed certificates with PHP 5.6 onwards.
