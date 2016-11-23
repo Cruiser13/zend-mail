@@ -206,7 +206,9 @@ abstract class AbstractProtocol
         $errorStr = '';
 
         // open connection
-        $this->socket = @stream_socket_client($remote, $errorNum, $errorStr, self::TIMEOUT_CONNECTION);
+		$socket_options = array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true));
+		$socket_context = stream_context_create($socket_options);
+        $this->socket = @stream_socket_client($remote, $errorNum, $errorStr, self::TIMEOUT_CONNECTION, STREAM_CLIENT_CONNECT, $socket_context);
 
         if ($this->socket === false) {
             if ($errorNum == 0) {
